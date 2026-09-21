@@ -3,42 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NATAN GRILL - Tanguá</title>
+<title>NATAN GRILL - Buffet para Festas - Duque de Caxias</title>
 <style>
-body{margin:0;background:#0e0e0e;color:#fff;font-family:Arial;text-align:center}
-.top{background:#ffcc00;color:#000;padding:30px 10px}
+body{margin:0;background:#111;color:#fff;font-family:Arial;text-align:center}
+.top{background:#ffcc00;color:#000;padding:35px 15px}
 .top h1{margin:0;font-size:42px}
-.card{background:#1c1c1c;margin:15px;border-radius:12px;padding:20px;border:1px solid #333}
-.price{color:#ffcc00;font-size:24px;font-weight:bold}
-.btn{background:#25D366;color:#fff;padding:18px 35px;border-radius:10px;text-decoration:none;display:inline-block;font-size:20px;margin:20px 0;font-weight:bold}
+.card{background:#1c1c1c;margin:15px;border-radius:16px;padding:20px;border:1px solid #333}
+.btn{background:#25D366;color:#fff;padding:20px 30px;border-radius:12px;text-decoration:none;display:inline-block;font-size:22px;font-weight:bold;margin:15px 5px}
+.pessoas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:15px 0}
+.pessoas button{background:#222;border:2px solid #444;color:#fff;padding:12px 18px;border-radius:10px;font-size:18px;cursor:pointer}
+.pessoas button.ativo{background:#ffcc00;color:#000;border-color:#ffcc00;font-weight:bold}
+#resultado{background:#000;border:2px dashed #ffcc00;border-radius:12px;padding:20px;margin-top:15px}
+.preco{color:#25D366;font-size:32px;font-weight:bold}
 </style>
 </head>
 <body>
 <div class="top">
 <h1>🔥 NATAN GRILL 🔥</h1>
-<p>O sabor que Tanguá respeita</p>
+<p style="font-size:20px;margin:8px 0 0"><b>Buffet Completo para sua Festa em Duque de Caxias</b></p>
+<p>Você faz a festa, a gente faz o churrasco</p>
 </div>
 
 <div class="card">
-<h2>Picanha Na Chapa Completa</h2>
-<p>Fritas + Vinagrete + Farofa da Casa</p>
-<div class="price">R$ 35,00</div>
+<h2 style="color:#ffcc00;margin:0">Monte sua Festa</h2>
+<p>Quantas pessoas na sua festa?</p>
+<div class="pessoas">
+<button onclick="calcular(10,this)">10 pessoas</button>
+<button onclick="calcular(20,this)" class="ativo">20 pessoas</button>
+<button onclick="calcular(30,this)">30 pessoas</button>
+<button onclick="calcular(40,this)">40 pessoas</button>
+<button onclick="calcular(50,this)">50 pessoas</button>
+<button onclick="calcular(70,this)">70+ pessoas</button>
 </div>
 
-<div class="card">
-<h2>Costelão BBQ</h2>
-<p>Desmanchando, com molho barbecue artesanal</p>
-<div class="price">R$ 40,00</div>
+<div id="resultado">
+<div style="color:#aaa">Orçamento para <span id="qtd">20</span> pessoas:</div>
+<div class="preco" id="valor">R$ 850,00</div>
+<div id="detalhe" style="color:#ddd;margin-top:10px;line-height:1.5">
+✔ Churrasqueiro 4h no local<br>
+✔ 4 carnes + pão com alho<br>
+✔ Farofa, vinagrete, carvão e espetos inclusos
+</div>
+<a class="btn" id="zap" href="https://wa.me/5521999999999?text=Ola%20Natan!%20Quero%20orcamento%20para%2020%20pessoas%20em%20Caxias">NEGOCIAR ESSE VALOR NO ZAP</a>
+<p style="color:#777;font-size:13px">Valor estimado. Pode parcelar e negociar direto com o Natan</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Linguiça Artesanal no Pão</h2>
-<p>Com queijo coalho derretido</p>
-<div class="price">R$ 25,00</div>
+<div class="card" style="text-align:left">
+<h3 style="color:#ffcc00">O que vai no buffet?</h3>
+✔ Picanha, Contra-filé, Linguiça, Frango, Pão com alho<br>
+✔ Queijo coalho (pacotes maiores)<br>
+✔ Farofa da casa, vinagrete, fritas<br>
+✔ Churrasqueira profissional, carvão, gelo<br>
+✔ Atendimento completo, sem sujeira na sua casa
 </div>
 
-<a class="btn" href="https://wa.me/5521980000000?text=Olá%20Natan%20Grill!%20Vi%20o%20site%20e%20quero%20pedir:">PEDIR NO WHATSAPP</a>
-
-<p style="color:#777;padding:20px">Entregamos em Tanguá e região • Aberto até 23h</p>
+<script>
+function calcular(qtd, botao){
+  document.querySelectorAll('.pessoas button').forEach(b=>b.classList.remove('ativo'));
+  botao.classList.add('ativo');
+  document.getElementById('qtd').innerText=qtd;
+  let preco=0, detalhe="";
+  if(qtd==10){preco="R$ 650,00"; detalhe="✔ Churrasqueiro 4h<br>✔ 3 carnes + pão c/ alho<br>✔ Farofa + vinagrete inclusos";}
+  if(qtd==20){preco="R$ 850,00"; detalhe="✔ Churrasqueiro 4h<br>✔ 4 carnes + pão c/ alho<br>✔ Farofa, vinagrete, carvão inclusos";}
+  if(qtd==30){preco="R$ 1.250,00"; detalhe="✔ Churrasqueiro 5h<br>✔ 5 carnes + queijo coalho<br>✔ Tudo incluso + fritas";}
+  if(qtd==40){preco="R$ 1.550,00"; detalhe="✔ O MAIS PEDIDO<br>✔ 5 carnes + queijo coalho<br>✔ Fritas + equipe completa";}
+  if(qtd==50){preco="R$ 1.950,00"; detalhe="✔ Festa grande<br>✔ 6 carnes + acompanhamentos<br>✔ Equipe + churrasqueira grande";}
+  if(qtd==70){preco="Sob consulta"; detalhe="✔ Casamentos, empresas, festão<br>✔ Orçamento personalizado<br>✔ Parcelamos no cartão";}
+  document.getElementById('valor').innerText=preco;
+  document.getElementById('detalhe').innerHTML=detalhe;
+  document.getElementById('zap').href="https://wa.me/5521999999999?text=Ola%20Natan!%20Quero%20orcamento%20para%20"+qtd+"%20pessoas%20em%20Duque%20de%20Caxias.%20Vi%20o%20valor%20de%20"+preco;
+}
+</script>
 </body>
 </html>
